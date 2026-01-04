@@ -2,7 +2,7 @@
   "name": "cart-service",
   "version": "1.0.0",
   "description": "Cart microservice with authentication",
-  "main": "dist/app.js",
+  "main": "dist/src/app.js",
   "scripts": {
     "dev": "ts-node-dev --respawn src/app.ts",
     "build": "tsc",
