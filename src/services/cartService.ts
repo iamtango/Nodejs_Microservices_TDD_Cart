@@ -460,23 +460,49 @@ export const checkout = async (userId: string, checkoutData: CheckoutDto, authHe
 
   // If payment method is WALLET, check and deduct balance
   if (paymentMethod === PaymentMethod.WALLET) {
+    console.log(`[WALLET] Attempting wallet payment for user ${userId}, amount: ${cartData.finalPrice}`);
+    console.log(`[WALLET] Auth service URL: ${AUTH_SERVICE_URL}`);
+    
     try {
       // 1. Check if user has enough balance
+      console.log(`[WALLET] Fetching profile from: ${AUTH_SERVICE_URL}/profile`);
       const profileRes = await axios.get(`${AUTH_SERVICE_URL}/profile`, {
-        headers: { Authorization: authHeader }
+        headers: { 
+          Authorization: authHeader,
+          Cookie: authHeader?.includes('Bearer') ? '' : `token=${authHeader?.replace('Bearer ', '')}`
+        }
       });
       
-      const userBalance = profileRes.data.user.walletBalance;
+      console.log(`[WALLET] Profile response:`, JSON.stringify(profileRes.data, null, 2));
+      
+      const userBalance = profileRes.data?.user?.walletBalance ?? profileRes.data?.walletBalance ?? 0;
+      console.log(`[WALLET] User balance: ${userBalance}, Required: ${cartData.finalPrice}`);
+      
       if (userBalance < cartData.finalPrice) {
         throw new Error('Insufficient wallet balance');
       }
 
       // 2. Deduct balance
-      await axios.post(`${AUTH_SERVICE_URL}/deduct-balance`, 
+      console.log(`[WALLET] Deducting balance from: ${AUTH_SERVICE_URL}/deduct-balance`);
+      const deductRes = await axios.post(`${AUTH_SERVICE_URL}/deduct-balance`, 
         { amount: cartData.finalPrice },
-        { headers: { Authorization: authHeader } }
+        { 
+          headers: { 
+            Authorization: authHeader,
+            'Content-Type': 'application/json'
+          } 
+        }
       );
+      console.log(`[WALLET] Deduct response:`, JSON.stringify(deductRes.data, null, 2));
+      
     } catch (error: any) {
+      console.error(`[WALLET] Payment failed:`, {
+        message: error.message,
+        status: error.response?.status,
+        data: error.response?.data,
+        url: error.config?.url
+      });
+      
       const errorMessage = error.response?.data?.message || error.message;
       throw new Error(`Wallet payment failed: ${errorMessage}`);
     }

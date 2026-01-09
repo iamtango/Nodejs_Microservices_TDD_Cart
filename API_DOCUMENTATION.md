@@ -400,6 +400,194 @@ curl http://localhost:3002/api/cart/transactions/64abc123def456789 \
 
 ---
 
+## Rating Endpoints
+
+> [!NOTE]
+> Users can only rate fruits they have purchased. The system validates this by checking transaction history.
+
+### 1. `GET /api/ratings/fruit/:fruitId/summary` - Get Fruit Rating Summary (Public)
+
+**Purpose:** Get the aggregated rating summary for a fruit, including average rating and all reviews.
+
+```bash
+curl http://localhost:3002/api/ratings/fruit/64abc123def456/summary
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Rating summary retrieved successfully",
+  "summary": {
+    "fruitId": "64abc123def456",
+    "fruitName": "Apple",
+    "averageRating": 4.2,
+    "totalRatings": 15,
+    "ratings": [
+      {
+        "rating": 5,
+        "review": "Excellent quality and taste!",
+        "createdAt": "2024-12-23T10:00:00.000Z"
+      }
+    ]
+  }
+}
+```
+
+---
+
+### 2. `GET /api/ratings/ratable` - Get Ratable Fruits (Protected)
+
+**Purpose:** Get all fruits that the user has purchased but not yet rated.
+
+```bash
+curl http://localhost:3002/api/ratings/ratable \
+  -H "Authorization: Bearer $TOKEN"
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Ratable fruits retrieved successfully",
+  "fruits": [
+    {
+      "fruitId": "64abc123def456",
+      "fruitName": "Apple",
+      "purchasedAt": "2024-12-23T10:00:00.000Z"
+    }
+  ],
+  "total": 1
+}
+```
+
+---
+
+### 3. `GET /api/ratings` - Get My Ratings (Protected)
+
+**Purpose:** Get all ratings submitted by the authenticated user.
+
+```bash
+curl http://localhost:3002/api/ratings \
+  -H "Authorization: Bearer $TOKEN"
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Ratings retrieved successfully",
+  "ratings": [
+    {
+      "id": "64xyz789...",
+      "fruitId": "64abc123...",
+      "rating": 4,
+      "review": "Good quality fruit",
+      "createdAt": "2024-12-23T10:00:00.000Z"
+    }
+  ],
+  "total": 5
+}
+```
+
+---
+
+### 4. `GET /api/ratings/:fruitId` - Get My Rating for a Fruit (Protected)
+
+**Purpose:** Get the user's rating for a specific fruit.
+
+```bash
+curl http://localhost:3002/api/ratings/64abc123def456 \
+  -H "Authorization: Bearer $TOKEN"
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Rating retrieved successfully",
+  "rating": {
+    "id": "64xyz789...",
+    "fruitId": "64abc123...",
+    "rating": 4,
+    "review": "Good quality fruit",
+    "createdAt": "2024-12-23T10:00:00.000Z"
+  }
+}
+```
+
+---
+
+### 5. `POST /api/ratings` - Submit/Update a Rating (Protected)
+
+**Purpose:** Rate a fruit that you have purchased. If already rated, updates the existing rating.
+
+```bash
+curl -X POST http://localhost:3002/api/ratings \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "fruitId": "64abc123def456",
+    "rating": 5,
+    "review": "Excellent quality, very fresh!"
+  }'
+```
+
+**Request Body:**
+| Field | Type | Required | Description |
+|-------|------|----------|-------------|
+| `fruitId` | string | ✅ | MongoDB ObjectId of the fruit |
+| `rating` | number | ✅ | Rating from 1 to 5 |
+| `review` | string | ❌ | Optional review text (max 500 chars) |
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Rating submitted successfully",
+  "rating": {
+    "id": "64xyz789...",
+    "fruitId": "64abc123...",
+    "rating": 5,
+    "review": "Excellent quality, very fresh!",
+    "createdAt": "2024-12-23T10:00:00.000Z"
+  },
+  "fruitStats": {
+    "averageRating": 4.5,
+    "totalRatings": 10
+  }
+}
+```
+
+**Error: Not Purchased (403):**
+```json
+{
+  "success": false,
+  "message": "You can only rate fruits you have purchased"
+}
+```
+
+---
+
+### 6. `DELETE /api/ratings/:fruitId` - Delete My Rating (Protected)
+
+**Purpose:** Delete your rating for a specific fruit ID.
+
+```bash
+curl -X DELETE http://localhost:3002/api/ratings/64abc123def456 \
+  -H "Authorization: Bearer $TOKEN"
+```
+
+**Response:**
+```json
+{
+  "success": true,
+  "message": "Rating deleted successfully"
+}
+```
+
+---
+
 ## Quick Reference Table
 
 | Endpoint | Method | Auth | Description |
@@ -418,6 +606,12 @@ curl http://localhost:3002/api/cart/transactions/64abc123def456789 \
 | `/api/cart/checkout` | POST | ✅ | Checkout |
 | `/api/cart/transactions` | GET | ✅ | Order history |
 | `/api/cart/transactions/:id` | GET | ✅ | Order details |
+| `/api/ratings/fruit/:fruitId/summary` | GET | ❌ | Get fruit rating summary |
+| `/api/ratings/ratable` | GET | ✅ | Get fruits user can rate |
+| `/api/ratings` | GET | ✅ | Get user's ratings |
+| `/api/ratings/:fruitId` | GET | ✅ | Get user's rating for fruit |
+| `/api/ratings` | POST | ✅ | Submit/update rating |
+| `/api/ratings/:fruitId` | DELETE | ✅ | Delete rating |
 
 ---
 

@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express';
 import cors from 'cors';
 import cartRoutes from './routes/cartRoutes';
 import fruitRoutes from './routes/fruitRoutes';
+import ratingRoutes from './routes/ratingRoutes';
 import { authMiddleware, mockAuthMiddleware } from './middleware/authMiddleware';
 import cookieParser from 'cookie-parser';
 
@@ -29,6 +30,9 @@ const authMiddlewareToUse = process.env.NODE_ENV === 'test'
 
 // Public fruit routes (no auth required for viewing)
 app.use('/api/fruits', fruitRoutes);
+
+// Rating routes (has both public and protected endpoints)
+app.use('/api/ratings', ratingRoutes);
 
 // Protected cart routes
 app.use('/api/cart', authMiddlewareToUse, cartRoutes);

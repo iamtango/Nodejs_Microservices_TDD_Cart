@@ -2,3 +2,5 @@
 export { default as Fruit, IFruit, OfferType } from "./fruit";
 export { default as TransactionHistory, ITransactionHistory, ITransactionItem, TransactionStatus, PaymentMethod } from "./transactionHistory";
 export { default as Cart, ICart, ICartItem } from "./cart";
+export { default as FruitRating, IFruitRating } from "./fruitRating";
+
