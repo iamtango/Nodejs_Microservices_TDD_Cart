@@ -1,0 +1,878 @@
+{
+	"info": {
+		"_postman_id": "63d6e54d-d24a-4a92-bcfa-a28394343009",
+		"name": "Nodejs Demo",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "50503857",
+		"_collection_link": "https://vedang-nikure-1956325.postman.co/workspace/Vedang-Nikure's-Workspace~2f762e77-cf0f-487b-8d49-63a5e9d4c2c7/collection/50503857-63d6e54d-d24a-4a92-bcfa-a28394343009?action=share&source=collection_link&creator=50503857"
+	},
+	"item": [
+		{
+			"name": "Register send email",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Vedang Nikure\", \"email\": \"vedang@gmail.com\" , \"password\": \"vedang@123\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/auth/register",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register send sms",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Vedang Nikure\", \"email\": \"vedang11@gmail.com\" , \"password\": \"vedang@123\", \"notificationPreference\": \"sms\",\n  \"phoneNumber\": \"+1234567890\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/auth/register",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register a New User with Code",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"name\": \"Vedang Nikure\", \"email\": \"vedang@gmail.com\" , \"password\": \"vedang@123\", \"referralCodeUsed\":\"23B9FCB6\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/auth/register",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"vedang@gmail.com\",\n    \"password\": \"vedang@123\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/auth/login",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get user profile",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/auth/profile",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"profile"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order confirmation notification",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/auth/notify-order",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"notify-order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Order confirmation notification Copy",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/auth/notify-order",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"auth",
+						"notify-order"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Fruits",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/fruits",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"fruits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Fruit by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/fruits?id=694a322526619c571f0c7b9d",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"fruits"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "694a322526619c571f0c7b9d"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get page  with items per page",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/fruits?page=1&limit=10",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"fruits"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "1"
+						},
+						{
+							"key": "limit",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Fruits with Active Offers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/fruits?hasOffer=true",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"fruits"
+					],
+					"query": [
+						{
+							"key": "hasOffer",
+							"value": "true"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Fruits with sorted order",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/fruits?sortBy=rating&sortOrder=asc",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"fruits"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "rating"
+						},
+						{
+							"key": "sortOrder",
+							"value": "asc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Fruits by Category",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/fruits?category=General",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"fruits"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "General"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search Fruits",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/fruits?q=apple",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"fruits"
+					],
+					"query": [
+						{
+							"key": "q",
+							"value": "apple"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create New Fruit",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Guava11\",\n    \"price\": 60,\n    \"description\": \"Fresh Guava\",\n    \"category\": \"General\",\n    \"stockQuantity\": 100,\n    \"offerType\": \"BUY_2_GET_3_FREE\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/fruits",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"fruits"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Fruit",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"price\": 115,\n    \"offerType\": \"BUY_1_GET_1_FREE\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/fruits/695e10b1b1e87dcbead9b58d",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"fruits",
+						"695e10b1b1e87dcbead9b58d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Fruit",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/fruits/695f6034cb3304d844561e95",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"fruits",
+						"695f6034cb3304d844561e95"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User's Cart",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/cart",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Item to Cart",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "",
+						"value": "",
+						"disabled": true
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fruitId\": \"694a322526619c571f0c7b9d\",\n    \"quantity\": 4\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/cart/items",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"items"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Item Quantity",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"quantity\": 2}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/cart/items/694bbc2956997ebc68216351",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"items",
+						"694bbc2956997ebc68216351"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Remove Item from Cart",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/cart/items/695e0787c77427f0400caf79",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"items",
+						"695e0787c77427f0400caf79"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Clear Entire Cart",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/cart",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Checkout Cart",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"paymentMethod\": \"CREDIT_CARD\",\n    \"notes\": \"Please deliver between 10am-2pm\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/cart/checkout",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"checkout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transaction History",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/cart/transactions",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Transaction Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/cart/transactions/694a4a2b7aeaad7772640e32",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"cart",
+						"transactions",
+						"694a4a2b7aeaad7772640e32"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Fruit Rating Summary",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/ratings/fruit/694a322526619c571f0c7b9d/summary",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings",
+						"fruit",
+						"694a322526619c571f0c7b9d",
+						"summary"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Ratable Fruits",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/ratings/ratable",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings",
+						"ratable"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get My Ratings",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/ratings",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get My Rating for a Fruit",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"url": {
+					"raw": "{{baseURL}}/api/ratings/694a46737ee432335de46e0a",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings",
+						"694a46737ee432335de46e0a"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Submit/Update a Rating",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"fruitId\": \"694a46737ee432335de46e0a\",\n    \"rating\": 3\n    //\"review\": \"Excellent quality, very fresh!\"\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/api/ratings",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete My Rating",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/api/ratings/694a46737ee432335de46e0a",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"api",
+						"ratings",
+						"694a46737ee432335de46e0a"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseURL0",
+			"value": ""
+		},
+		{
+			"key": "baseURL01",
+			"value": ""
+		},
+		{
+			"key": "baseURL02",
+			"value": ""
+		},
+		{
+			"key": "baseURL1",
+			"value": ""
+		},
+		{
+			"key": "baseURL2",
+			"value": ""
+		},
+		{
+			"key": "baseURL",
+			"value": ""
+		}
+	]
+}
